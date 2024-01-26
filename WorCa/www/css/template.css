@@ -1,0 +1,230 @@
+::-webkit-scrollbar {
+    display: none;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+@media (orientation: landscape) {
+    html{
+        font-size: 4vh;
+    }
+  }
+  
+  @media (orientation: portrait) {
+    html{
+        font-size: 4vw;
+    }
+  }
+
+body{
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.structure{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    overflow: hidden;
+}
+
+.menu{
+    width: 80%;
+    height: 100%;
+    background: #3a3a3a;
+    margin-left: -80%;
+    transition: .5s ease-in-out;
+    position: absolute;
+    z-index: 10;
+    color: white;
+    overflow: hidden;
+    padding: 4rem 10px 0 10px;
+    display: flex;
+    flex-direction: column;
+    overflow: scroll;
+}
+
+.menu > .calendars{
+    position: sticky;
+    top: 0;
+    overflow: scroll;
+    height: -webkit-fill-available;
+}
+
+.menu > .calendars > ul{
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.menu > .calendars > ul > li{
+    background-color: #4a4a4a;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    padding: 2px 8px;
+    position: relative;
+}
+
+.menu > .calendars > ul > li > p{
+    overflow-wrap: anywhere;
+}
+
+.menu > .calendars > ul > li > i{
+    width: 20px;
+    text-align: center;
+}
+
+.menu > .calendars > ul > li.selected{
+    background-color: #939393!important;
+}
+
+.menu > .calendars > ul > li > ul{
+    position: absolute;
+    right: 0;
+    top: 100%;
+    list-style: none;
+    background: black;
+    border-radius: 5px;
+    overflow: hidden;
+    opacity: 0;
+    height: 0;
+}
+.menu > .calendars > ul > li > ul.open{
+    opacity: 1;
+    height: auto;
+    padding: 5px 10px;
+    transition: .1s linear;
+}
+
+#menu-icon{
+    z-index: 11;
+}
+
+.content{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-areas: 'header' 'body';
+    grid-template-rows: 7% 93%;
+    transition: .5s ease-in-out;
+}
+
+.menu-open .menu{
+    margin-left: 0;
+}
+
+.header{
+    grid-area: header;
+    background: black;
+    display: flex;
+    justify-content: space-between;
+}
+
+.header > div{
+    width: fit-content;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.header > div:first-child{
+    float: left;
+}
+
+.header i{
+    font-size: 4vh;
+    color: white;
+    padding: 0.4rem;
+    cursor: pointer;
+    transition: .5s ease-in-out;
+}
+
+.menu-open #menu-icon{
+    transform: rotate(-180deg);
+}
+
+.header h1{
+    color: white;
+}
+
+.settings-open #settings-icon{
+    transform: rotate(-120deg);
+}
+
+#settings-menu{
+    position: absolute;
+    right: 0;
+    top: 7%;
+    color: white;
+    background: #3a3a3a;
+    min-width: fit-content;
+    max-width: 95vw;
+    height: fit-content;
+    max-height: 0;
+    overflow: hidden;
+    border-radius: 5px;
+    box-shadow: 0 0px 10px rgb(0,0,0, .3);
+    transition: .5s ease-in-out;
+    z-index: 9;
+}
+
+#settings-menu ul{
+    padding: 5px 10px;
+}
+
+#settings-menu li, #settings-menu label{
+    font-size: 2rem;
+    border-bottom: 1px solid lightgrey;
+}
+
+#settings-menu li:hover{
+    background: lightgrey;
+}
+
+#settings-menu li:last-child{
+    border-bottom: none;
+}
+
+.settings-open #settings-menu{
+    max-height: 200px;
+    height: fit-content;
+}
+
+.body{
+    grid-area: body;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10px;
+    flex-direction: column;
+}
+
+
+
+@media (min-width: 992px) {
+    .menu{
+        width: 0;
+        margin-left: 0;
+        position: inherit;
+    }
+    
+    .menu-open .menu{
+        width: 20%;
+    }
+    
+    .menu-open .content{
+        width: 80%;
+    }
+
+    .menu-open #menu-icon{
+        margin-left: -100%;
+    }
+}

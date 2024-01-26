@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="io.cordova.hellocordova" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>WorCA</name>
+    <description>Calendario de turnos de trabajo</description>
+    <author email="ikerlorentecalvo@gmail.com">
+        Iker Lorente Calvo
+    </author>
+    <content src="index.html" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <icon src="www/icons/logo.png" />
+    <access origin="*" />
+    <allow-navigation href="*"/>
+    <access origin="*" />
+    <preference name="AndroidPersistentFileLocation" value="Compatibility" />	
+    <preference name="AndroidExtraFilesystems" value="sdcard,cache" />
+    <feature name="SocialSharing">
+        <param name="android-package" value="nl.xservices.plugins.SocialSharing" />
+    </feature>
+</widget>

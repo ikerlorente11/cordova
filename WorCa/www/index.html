@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head id="header">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <meta http-equiv="Content-Security-Policy" content="default-src *; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data:">
+    
+    <link rel="stylesheet" href="css/clases.css">
+    <link rel="stylesheet" href="css/template.css">
+    <link rel="stylesheet" href="css/style.css">
+    
+    <script src="js/long-press-event.js"></script>
+    <script src="js/turnos.js"></script>
+    <script src="cordova.js" defer></script>
+    <script src="js/database.js" defer></script>
+    <!--<script src="js/script.js" defer></script>-->
+</head>
+<body>
+    <div id="structure" class="structure">
+        <div id="menu" class="menu">
+            <div class="calendars">
+                <h1>Mi calendario</h1>
+                <ul id="localCalendar">
+                    <li id="btn-local" class="selected d-flex align-center justify-between">
+                        <p>Mi calendario</p>
+                    </li>
+                </ul>
+                
+                <h1 id="importedTitle">Importados</h1>
+                <ul id="importedCalendar">
+                    
+                </ul>
+    
+                <h1 id="sharedTitle" class="d-none">Compartidos</h1>
+                <ul id="sharedCalendar">
+    
+                </ul>
+            </div>
+
+            <div class="importExportBtns">
+                <input type="file" id="file-import" class="d-none">
+                <label for="file-import">Importar</label>
+                <div id="btn-exportar">Exportar</div>
+            </div>
+        </div>
+        <div id="content" class="content">
+            <div id="selectors" class="selectors">
+                <div id="month-selector" class="month-selector">
+                    <h1 class="month-selector-header">Selecciona el mes</h1>
+                    <div id="month-selector-body" class="month-selector-body"></div>
+                </div>
+                <div id="year-selector" class="year-selector">
+                    <h1 class="year-selector-header">Selecciona el año</h1>
+                    <div id="year-selector-body" class="year-selector-body"></div>
+                </div>
+            </div>
+            <div id="selected-day" class="selected-day d-none">
+                <div id="selected-day-container" class="fit-height selected-day-container p-relative">
+                    <i id="selected-day-close" class="fa-solid fa-xmark p-absolute btn-close"></i>
+                    <p class="w-100 d-flex align-center justify-evenly pt-1 pb-1">
+                        <select id="selected-day-turno-select" class="turno-select">
+                            <option value="0">--Turnos--</option>
+                        </select>
+                    </p>
+                    <p class="size">
+                        <input type="radio" id="selected-day-radio-work" name="selected-day-type" value="0" checked>
+                        <label for="selected-day-radio-work">Laborable</label><br>
+                        <input type="radio" id="selected-day-radio-free" name="selected-day-type" value="1">
+                        <label for="selected-day-radio-free">Libre</label><br>
+                    </p>
+                    <p class="size">
+                        Nombre
+                        <input id="selected-day-turno-name" type="text">
+                    </p>
+                    <p class="size">
+                        Letra
+                        <input id="selected-day-turno-character" type="text" maxlength="1">
+                    </p>
+                    <p class="size d-flex wrap">
+                        Descripcion
+                        <textarea id="selected-day-turno-description" rows="4" cols="50" class="w-100"></textarea>
+                    </p>
+                    <p class="size">
+                        Color letra
+                        <input id="selected-day-turno-color" type="color" value="#ffffff">
+                    </p>
+                    <p class="size">
+                        Color fondo
+                        <input id="selected-day-turno-bg-color" type="color">
+                    </p>
+                    <p class="size">
+                        Horas extra
+                        <input id="selected-day-turno-horas-extra" type="time">
+                    </p>
+                    <p class="size">
+                        Horario
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Inicio</th>
+                                    <th>Fin</th>
+                                </tr>
+                            </thead>
+                            <tbody id="selected-day-timezones">
+                            </tbody>
+                            <tr id="selected-day-turnoTimes" class="d-none">
+                                <td><input id="selected-day-timezoneStart" type="time"></td>
+                                <td><input id="selected-day-timezoneEnd" type="time"></td>
+                            </tr>
+                        </table>
+                        <p class="selected-day-turno-btns">
+                            <i id="selected-day-timezoneAdd" class="fa-solid fa-plus"></i>
+                            <i id="selected-day-timezoneRemove" class="fa-solid fa-trash"></i>
+                            <i id="selected-day-timezoneSave" class="fa-solid fa-circle-check d-none"></i>
+                            <i id="selected-day-timezoneCancel" class="fa-solid fa-circle-xmark d-none"></i>
+                        </p>
+                    </p>
+                    <p class="pt-1">
+                        <button id="btn-delete-day" class="btn btn-secondary">Eliminar</button>
+                        <button id="btn-save-day" class="btn btn-primary">Guardar</button>
+                    </p>
+                </div>
+            </div>
+            <div id="turnos" class="turnos d-none">
+                <div id="turnos-container" class="fit-height turnos-container p-relative">
+                    <i id="turnos-close" class="fa-solid fa-xmark p-absolute btn-close"></i>
+                    <p class="w-100 d-flex align-center justify-evenly pt-1 pb-1">
+                        <i id="turno_remove" class="fa-solid fa-trash"></i>
+                        <select id="turno-select" class="turno-select">
+                            <option value="0">--Turnos--</option>
+                        </select>
+                    </p>
+                    <p class="size">
+                        <input type="radio" id="turno-radio-work" name="turno-type" value="0" checked>
+                        <label for="turno-radio-work">Laborable</label><br>
+                        <input type="radio" id="turno-radio-free" name="turno-type" value="1">
+                        <label for="turno-radio-free">Libre</label><br>
+                    </p>
+                    <p class="size">
+                        Nombre
+                        <input id="turno-name" type="text">
+                    </p>
+                    <p class="size">
+                        Letra
+                        <input id="turno-character" type="text" maxlength="1">
+                    </p>
+                    <p class="size">
+                        Color letra
+                        <input id="turno-color" type="color" value="#ffffff">
+                    </p>
+                    <p class="size">
+                        Color fondo
+                        <input id="turno-bg-color" type="color">
+                    </p>
+                    <p class="size">
+                        Horario
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Inicio</th>
+                                    <th>Fin</th>
+                                </tr>
+                            </thead>
+                            <tbody id="timezones">
+                            </tbody>
+                            <tr id="turnoTimes" class="d-none">
+                                <td><input id="timezoneStart" type="time"></td>
+                                <td><input id="timezoneEnd" type="time"></td>
+                            </tr>
+                        </table>
+                        <p class="turno-btns">
+                            <i id="timezoneAdd" class="fa-solid fa-plus"></i>
+                            <i id="timezoneRemove" class="fa-solid fa-trash"></i>
+                            <i id="timezoneSave" class="fa-solid fa-circle-check d-none"></i>
+                            <i id="timezoneCancel" class="fa-solid fa-circle-xmark d-none"></i>
+                        </p>
+                    </p>
+                    <p class="pt-1">
+                        <button id="btn-clear-turnos" class="btn btn-secondary">Limpiar</button>
+                        <button id="btn-save-turnos" class="btn btn-primary">Guardar</button>
+                    </p>
+                </div>
+            </div>
+            <div class="header">
+                <div>
+                    <i id="menu-icon" class="fa-solid fa-bars"></i>
+                </div>
+                <div class="title">
+                    <h1 id="app-name">WorCa</h1>
+                </div>
+                <div>
+                    <i id="settings-icon" class="fa-solid fa-gear"></i>
+                    <i id="check-icon" class="fa-solid fa-check d-none"></i>
+                </div>
+                <div id="settings-menu">
+                    <ul>
+                        <li id="btn-calendar">Calendar</li>
+                        <li id="btn-resume">Resumen</li>
+                        <li id="btn-turnos">Turnos</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="body p-relative">
+                <div class="calendar">
+                    <div id="calendar-header" class="calendar-header">
+                        <div id="btn-prev" class="prev">
+                            <i class="fa-solid fa-caret-left"></i>
+                        </div>
+                        <div id="calendar-header-date" class="calendar-header-date">
+                            <h3 id="calendar-subtitle"></h3>
+                            <h1 id="calendar-title"></h1>
+                        </div>
+                        <div id="btn-next" class="next">
+                            <i class="fa-solid fa-caret-right"></i>
+                        </div>
+                    </div>
+                    <div id="calendar-body" class="calendar-body"></div>
+                    <div id="resume" class="resume d-none">
+                        <div class="resume-header">
+                            <div>
+                                <div id="btn-year">Año</div>
+                                <div id="btn-month" class="selected">Mes</div>
+                                <div id="btn-range">Rango</div>
+                            </div>
+                            <div class="resume-range-dates d-none">
+                                <div>
+                                    <h3>Desde</h3>
+                                    <input id="resume-range-start" type="date">
+                                </div>
+                                <div>
+                                    <h3>Hasta</h3>
+                                    <input id="resume-range-end" type="date">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="resume-body">
+                            <div class="resume-turnos">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Turnos</th>
+                                            <th>Horario</th>
+                                            <th>Días</th>
+                                            <th>Tiempo</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="resume-tbody">
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="resume-total">
+                                <div id="resume-total-days">0 D&iacute;as</div>
+                                <div id="resume-total-time">0h 0m</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p id="edit-turno-select-container" class="d-none w-100 d-flex align-center justify-evenly pt-1">
+                    <select id="edit-turno-select" class="turno-select">
+                        <option value="0">--Turnos--</option>
+                    </select>
+                    <i id="day_remove" class="fa-solid fa-trash"></i>
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,344 @@
+.calendar{
+    height: fit-content;
+    width: 100%;
+    max-height: 98%;
+    color: #7c0000;
+    background: #c5c4ff;
+    padding: 3px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 15px #646464;
+    overflow: auto;
+}
+
+.calendar-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+}
+
+.calendar-header .prev, .calendar-header .next{
+    font-size: 2rem;
+}
+
+.calendar-header .calendar-header-date{
+    text-align: center;
+}
+
+.calendar-body{
+    display: grid;
+    grid-template-columns: repeat(7, auto);
+    grid-auto-rows: 1fr;
+    align-items: center;
+    min-height: 60vh;
+    gap: 3px;
+}
+
+.calendar-body h1, .calendar-body > div{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.calendar-body .day{
+    background: white;
+    flex-direction: column;
+    border-radius: 4px;
+    position: relative;
+}
+
+.calendar-body .day::after{
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: 3px;
+    width: 20%;
+    height: 25%;
+    border-radius: 1px 1px 2px 2px;
+    background: var(--tag-color);
+}
+
+.calendar-body span{
+    position: absolute;
+    bottom: 5px;
+    right: 1px;
+    line-height: 5px;
+    font-size: 1.3rem;
+}
+
+.calendar-body .day h3{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid black;
+    width: 100%;
+}
+
+.calendar-body .day h1{
+    height: inherit;
+    display: flex;
+    align-items: center;
+}
+
+.resume-header > div:first-child{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 5px;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.resume-header > div:last-child{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 5px;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-top: 5px;
+}
+
+.resume-header > div:first-child > div{
+    background: white;
+    border-radius: 5px;
+    padding: 3px;
+    width: -webkit-fill-available;
+    text-align: center;
+}
+
+.resume-header > div:first-child > div.selected{
+    background: black!important;
+    color: white;
+}
+
+.resume-range-dates > div{
+    text-align: center;
+    width: 50%;
+}
+
+.resume-range-dates > div > input{
+    width: 100%;
+}
+
+.resume-body{
+    padding: 0 2px;
+}
+
+.resume-body table{
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.resume-body table tbody tr td{
+    height: 2.2rem;
+}
+
+.resume-body table tbody tr td:nth-child(1){
+    border-radius: 3px;
+}
+.resume-body table tbody tr td:nth-child(2){
+    font-size: .8rem;
+}
+
+.resume-body .resume-total{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid #8f8f8f;
+    padding: 5px 8px;
+    margin-top: 5px;
+    font-weight: 600;
+}
+
+.selectors{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.month-selector{
+    background: #3a3a3a;
+    padding: 10px;
+    border-radius: 10px;
+    color: white;
+    overflow: hidden;
+}
+
+.month-selector-header{
+    text-align: center;
+    border-bottom: 1px solid white;
+}
+
+.month-selector-body{
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+}
+
+.month-selector-body h1{
+    color: black;
+    background: white;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    padding: 3px;
+    font-size: 1.5rem;
+}
+
+.year-selector{
+    background: #3a3a3a;
+    padding: 10px;
+    border-radius: 10px;
+    color: white;
+    overflow: hidden;
+}
+
+.year-selector-header{
+    text-align: center;
+}
+
+.year-selector-body{
+    overflow: auto;
+    gap: 3px;
+    max-height: 40vh;
+}
+
+.year-selector h1{
+    text-align: center;
+    font-weight: 100;
+    padding-bottom: 3px;
+}
+
+.year-selector > h1:first-child{
+    border-bottom: 1px solid white;
+    padding-bottom: 10px;
+}
+
+.selected-day input[type="time"]{
+    width: min-content;
+    text-align: center;
+}
+
+.turnos, .selected-day{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 12;
+}
+
+.turnos-container, .selected-day-container{
+    color: white;
+    background: #3a3a3a;
+    padding: 10px;
+    width: 90vw;
+    display: grid;
+    gap: 5px;
+    border-radius: 10px;
+}
+
+.turnos-container p, .selected-day-container p{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.turno-select, .selected-day-turno-select{
+    height: 100%;
+    padding: 0.2rem;
+    font-size: 1.5rem;
+    border-radius: 6px;
+}
+
+.turno-select option, .selected-day-turno-select option{
+    color: var(--color);
+    background: var(--bg-color);
+}
+
+.turnos-container table, .selected-day-container table{
+    font-size: 1.4rem;
+    background-color: #4e4e4e;
+    border-radius: 10px;
+    text-align: center;
+    padding: 5px;
+    max-width: 90vw;
+}
+
+.turnos-container table thead tr th, .selected-day-container table thead tr th{
+    border-bottom: 1px solid white;
+}
+
+.turno-btns, .selected-day-turno-btns{
+    margin-top: 5px;
+    font-size: 2.5rem;
+    justify-content: space-around!important;
+}
+
+.turno-btns i:nth-child(1), .selected-day-turno-btns i:nth-child(1){
+    color: #c5c4ff;
+}
+.turno-btns i:nth-child(2), .selected-day-turno-btns i:nth-child(2){
+    color: #970000;
+}
+.turno-btns i:nth-child(3), .selected-day-turno-btns i:nth-child(3){
+    color: seagreen;
+}
+.turno-btns i:nth-child(4), .selected-day-turno-btns i:nth-child(4){
+    color: #970000;
+}
+
+#turno-character, #selected-day-turno-character{
+    width: 15%;
+}
+
+.fa-trash{
+    font-size: 2rem;
+    color: #009104;
+}
+
+#edit-turno-select-container{
+    margin-bottom: 10px;
+}
+
+#timezones tr:hover td, #selected-day-timezones tr:hover td{
+    color: black;
+    background-color: white;
+    border-radius: 3px;
+}
+
+.btn-close{
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: 2rem;
+}
+
+.importExportBtns{
+    display: flex;
+    justify-content: space-around;
+    font-size: 1.5rem;
+    margin: 10px 0;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.importExportBtns > label, .importExportBtns > div{
+    background-color: #939393;
+    border-radius: 5px;
+    padding: 5px 15px;
+    width: 100%;
+    text-align: center;
+}

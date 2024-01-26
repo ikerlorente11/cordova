@@ -1,0 +1,186 @@
+.d-none {
+    display: none !important;
+}
+
+.m-auto {
+    margin: auto;
+}
+
+.w-100{
+    width: 100%!important;
+}
+
+.p-relative{
+    position: relative;
+}
+
+.p-absolute{
+    position: absolute;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.wrap{
+    flex-wrap: wrap;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.justify-center {
+    justify-content: center !important;
+}
+
+.justify-between {
+    justify-content: space-between !important;
+}
+
+.justify-evenly {
+    justify-content: space-evenly !important;
+}
+
+.selected {
+    background: #b9b9b9 !important;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.pt-1 {
+    padding-top: 1rem;
+}
+
+.pb-1 {
+    padding-bottom: 1rem;
+}
+
+.btn {
+    border: 1px solid transparent;
+    padding: 0.375rem 0.75rem;
+    font-size: 1.3rem;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+}
+
+.size {
+    font-size: 1.5rem;
+}
+
+.size input:not([type='radio']) {
+    font-size: 1.5rem;
+    width: 50%;
+}
+
+.btn-primary {
+    color: white;
+    background: seagreen;
+}
+
+.btn-secondary {
+    background: #c5c4ff;
+}
+
+input:not([type='radio']),
+textarea {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+    border: none;
+    outline: none;
+}
+
+select {
+    outline: none;
+}
+
+input[type="color"] {
+    -webkit-appearance: none;
+    width: 30px!important;
+    height: 30px;
+    border: 0;
+    border-radius: 50%;
+    padding: 0;
+    overflow: hidden;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+input[type="color"]::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
+
+input[type="color"]::-webkit-color-swatch {
+    border: none;
+}
+
+input[type="text"], textarea {
+    display: block;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+input[type="file"]::-webkit-file-upload-button {
+    visibility: hidden;
+}
+
+input[type="file"]::before {
+    content: "Importar";
+}
+
+input[type="time"]{
+    height: 100%;
+    padding: 0.2rem;
+    font-size: 1.5rem;
+    border-radius: 6px;
+    max-width: 40vw;
+    text-align: center;
+}
+
+input[type="date"]{
+    height: 100%;
+    padding: 0.2rem;
+    border-radius: 6px;
+    width: 50%;
+    max-width: 40vw;
+    text-align: center;
+}
+
+.fit-height{
+    max-height: 95vh;
+    overflow: scroll;
+}
+
+.show{
+    animation: show .2s;
+}
+
+.unselectable {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+@keyframes show { 
+    0% {
+      opacity: 0;
+    }
+  
+    100% {
+      opacity: 1;
+    }
+}
